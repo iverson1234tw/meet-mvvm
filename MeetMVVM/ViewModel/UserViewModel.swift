@@ -5,17 +5,26 @@
 //  Created by Josh on 2023/12/21.
 //
 
-import UIKit
+import CoreData
 
 class UserViewModel {
 
-    // users init
-    var users: [UserModel] = []
+    // coreDataManager init
+    private let coreDataManager = CoreDataManager.shared
     
-    func fetchUser() {
-        
-        
-        
+    // MARK: - getUsers
+    func getUsers() -> [UserModel] {
+        coreDataManager.fetchUsers()
+    }
+    
+    // MARK: - addUser
+    func addUser(userModel: UserModel) {
+        coreDataManager.saveUser(userModel: userModel)
+    }
+
+    // MARK: - deleteUser
+    func deleteUser(userModel: UserModel) {
+        coreDataManager.deleteUser(userModel: userModel)
     }
     
 }
